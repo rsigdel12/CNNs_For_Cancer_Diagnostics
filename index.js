@@ -1,9 +1,18 @@
 const express = require("express");
 const app = express();
+const path = require("path");
+
+// Set EJS as the template engine
+app.set("view engine", "ejs");
+
+// Set the views directory
+app.set("views", path.join(__dirname, "views"));
+
 const port = 3000;
 
 app.get("/", (req, res) => {
-  res.send("Hello, world!");
+  const welcomeMessage = "Welcome to My Website!";
+  res.render("welcome", { welcomeMessage });
 });
 
 app.listen(port, () => {
